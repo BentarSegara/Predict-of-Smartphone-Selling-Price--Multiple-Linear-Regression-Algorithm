@@ -3,7 +3,6 @@ A simple GUI program to predict smartphone prices based on its storage, memory, 
 
 ---
 
----
 
 ## Data Source
 The dataset used in this project is the "Smartphone Sales Dataset" created by Yamin Hossein. It is available on Kaggle, and you can access it via this link: https://www.kaggle.com/datasets/yaminh/smartphone-sale-dataset.
