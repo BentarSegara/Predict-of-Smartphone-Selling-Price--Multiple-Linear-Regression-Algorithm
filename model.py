@@ -12,15 +12,15 @@ class LinerRegression:
     def __estimate_coeff_(self):
         self.X = np.insert(self.X, 0, 1.0, axis= 1)
 
-        X_T = np.transpose(self.X)  # X^T       --> X transpose         
-        XTX = X_T.dot(self.X)       # X^TX      --> X transpose dikali dengan matriks X
-        X_invers = ln.inv(XTX)      # (X^TX)^-1 --> Invers dari matriks X^TX
-        XTY = X_T.dot(self.Y)       # X^TY      --> X transpose dikali dengan matriks Y     # (X^TX)^-1 * X^TY    --> Inversi dari matriks X^TX dikali dengan matriks X^TY
+        X_T = np.transpose(self.X)  # X^T            --> X transpose         
+        XTX = X_T.dot(self.X)       # X^T * X        --> X transpose times by X matrix
+        X_invers = ln.inv(XTX)      # (X^T * X)^-1   --> Invers of X^TX matrix 
+        XTY = X_T.dot(self.Y)       # X^T * Y        --> X transpose times by Y matrix
 
     
-        estimate_coef = X_invers.dot(XTY)           # bentuk nya -> [β0, β1, β2, ...., βx]
-        self.intercept__ = estimate_coef[0]         #  β0                               -> intercept 
-        self.coef__ = estimate_coef[1:].tolist()    # β1, β2, βx                        -> koefisien regresi 
+        estimate_coef = X_invers.dot(XTY)           #  (X^T * X)^-1 * (X^T * Y)  --> Inversi of (X^T * X matrix) times by (X^T * Y) matrix, result --> [β0, β1, β2, ...., βx]
+        self.intercept__ = estimate_coef[0]         #  β0                        --> intercept 
+        self.coef__ = estimate_coef[1:].tolist()    #  β1, β2, βx                --> regression coefficient 
 
     def predict(self, x : list[int | float]):
         if len(x) > len(self.coef__) or len(x) < len(self.coef__):
@@ -47,31 +47,8 @@ class LinerRegression:
         SS_tot = sum([(y_actual[i] - avg)**2 for i in range(len(y_actual))])
 
         return (1 - (SS_res / SS_tot))
-    
 
 
-    
-
-
-
-# data = {
-#     'Luas_Tanah': [120, 150, 200, 250, 300],
-#     'Jumlah_Kamar': [2, 3, 4, 4, 5],
-#     'Harga_Rumah': [500, 600, 800, 1000, 1200]
-# }
-
-# data = pd.DataFrame(data)
-
-# x = data[['Luas_Tanah', 'Jumlah_Kamar']]
-# y = data['Harga_Rumah']
-
-# model = LinerRegression(x, y)
-# predict = model.predict(120, 2)
-# print(LinerRegression.accuracy([predict], [500]))
-# sales_data = pd.read_excel("UAS Project\dataset\Smartphone_sales_clean.xlsx")
-
-# x_variables = sales_data[['Memory', 'Storage', 'Original Price', 'Discount']]
-# y_variables = sales_data['Selling Price']
 
 
 
