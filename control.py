@@ -3,28 +3,12 @@ import numpy as np
 
 from model import LinerRegression
 
-sales_data = pd.read_excel("UAS Project\dataset\Smartphone_sales_clean.xlsx")#  <-- buka dataset
+sales_data = pd.read_excel("UAS Project\dataset\Smartphone_sales_clean.xlsx")
 
-x_training = sales_data[['Memory', 'Storage', 'Original Price', 'Discount']]#   <-- Ambil semua data dari kolom ['Memory', 'Storage', 'Original Price', 'Discount'] sebagai variable- variable X
-y_training = sales_data['Selling Price']                                    #   <-- Ambil semua data dari kolom 'Selling Price' sebagai variable Y
+x_training = sales_data[['Memory', 'Storage', 'Original Price', 'Discount']]
+y_training = sales_data['Selling Price']                                    
 
-model = LinerRegression(x_training, y_training)                             #   <-- Buat model Regresi Linear Ganda baru dengan memasukkan data - data variable X dan data variable Y
-
-
-# new_smarthone = {               # <-- buat data dummy baru (hanya untuk percobaan)
-#     'Memory' : 8000,
-#     'Storage' : 128000,
-#     'Original Price': 4_599_000,
-#     'Discount' : 275_000
-# }
-
-# new_smarthone_sell_price = model.predict(list(new_smarthone.values())) # <-- prediksi harga jual nya berdasarkan data data di atas
-
-# print(f'Prediksi harga jual = Rp.{new_smarthone_sell_price:,}'.replace(",", "."))
-
-
-
-
+model = LinerRegression(x_training, y_training)                             
 
 # training #
 
