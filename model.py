@@ -53,16 +53,20 @@ class LinerRegression:
 
 
 """
-    β = (X^T * X)^-1 * (X^T * Y) --> estimate coeff formula
-    Y = β0 + β1X1 + β2X2 + ... + βnXn  -> model regresi
+    Formulas used in this class:
+    
+    * β = (X^T * X)^-1 * (X^T * Y) --> estimate coeff formula
+    * Y = β0 + β1X1 + β2X2 + ... + βnXn  -> regression model
 
+    * Cosine Similarity:
+                                        sum([a[i] * b[i] for i in range(len(a))])
+    Cosine Similarity (a, b) =     _____________________________________________________       --> (for calculating same accuration (used in accuracy method))
+                                 sqrt(sum([x**2 for x in a])) * sqrt(sum([x**2 for x in b]))
 
-    Data Prediksi (A): [4.5, 3.0, 5.0, 2.0]
-    Data Aktual (B): [4.0, 3.5, 4.5, 2.5]
-
-    sum([a[i] * b[i] for i in range(len(a))])
-    _____________________________________________________       --> Cosine Similarity (for calculating same accuration)
-    sqrt(sum([x**2 for x in a])) * sqrt(sum([x**2 for x in b]))
-
+    * R Squared:
+                      sum([(y_actual[i] - y_predict[i])**2 for i in range(len(y_actual))])
+          R^2 = 1 -  _____________________________________________________________________
+                   sum([(y_actual[i] - np.average(y_actual))**2 for i in range(len(y_actual))])
+                
 """
 
